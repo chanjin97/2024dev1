@@ -32,6 +32,30 @@ public class MyController {
 		model.addAttribute("dto",dao.viewDao(sId));
 		return "view";
 	}
+	
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest request) {
+		dao.deleteDao(request.getParameter("id"));
+		return "redirect:list";
+	}
+	
+	@RequestMapping("/write")
+	public String wirte(HttpServletRequest request) {
+		dao.writeDao(
+				request.getParameter("writer"),
+				request.getParameter("title"),
+				request.getParameter("content")
+				);
+		
+		return "redirect:list";
+		
+	}
+	
+	@RequestMapping("/writerForm")
+	public String writerFrom() {
+		return "writerForm";
+	}
+	
 }
 
 
