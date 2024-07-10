@@ -12,7 +12,7 @@ public class DiaryService {
 	@Autowired
 	private DiaryRepository diaryRepository;
 	
-	public Diary insert(Diary diary) {
+	public Diary create(Diary diary) {
 		Diary returnDiary = diaryRepository.save(diary);
 		return returnDiary;
 	}
