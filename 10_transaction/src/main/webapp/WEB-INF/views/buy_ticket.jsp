@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-pageEncoding="utf-8"%> <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %> <%@ page language="java"
+contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,9 +10,9 @@ pageEncoding="utf-8"%> <%@ taglib uri="jakarta.tags.core" prefix="c" %>
   <body>
     <h2>ticket</h2>
     <form action="./buy_ticket_card">
-      고객: <input type="text" name="consumerId" /> <br />
-      구매수: <input type="text" name="amount" /> <br />
-      에러넣기: <input type="text" name="error" /> <br />
+      고객: <input type="text" name="consumerId" /><br />
+      구매수: <input type="text" name="amount" /><br />
+      에러넣기: <input type="text" name="error" value="0" /><br />
       <input type="submit" value="구매" />
     </form>
   </body>
