@@ -14,7 +14,7 @@ public class MyController {
 	@Autowired
 	DiaryService diaryService;
 
-	@PostMapping("/create")
+	@PostMapping("/list")
 	public String create(
 			@RequestParam("")
 			) {
