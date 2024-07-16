@@ -27,12 +27,12 @@ public class DiaryEntity {
 	
 	private int reservationId;
 	
-	@Column(columnDefinition = "TEXT")
+//	@Column(columnDefinition = "TEXT")
 	private String content;
 	
 	private String category;
 	
-	private ZonedDateTime createdAt;
+	private ZonedDateTime createdAt = ZonedDateTime.now();
 
 	public void changeContent(String content) {
 		this.content = content;

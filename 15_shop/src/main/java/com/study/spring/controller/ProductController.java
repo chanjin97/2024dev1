@@ -116,9 +116,10 @@ public class ProductController {
 	}
 	
 	@DeleteMapping("/{pno}")
-	public Map<String, String> remove(
+	public Map<String,String> remove(
 			@PathVariable("pno") Long pno
-			) {
+			){
+		
 		List<String> oldFileNames = productService.get(pno).getUploadFileNames();
 		
 		productService.remove(pno);
@@ -126,6 +127,8 @@ public class ProductController {
 		fileUtil.deleteFiles(oldFileNames);
 		return Map.of("Result","success");
 	}
+	
+	
 	
 	
 	

@@ -18,6 +18,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	Page<Object[]> selectList(Pageable pageable);
 
 	@Modifying
-	@Query("update Product p set p.delFlag = flag where p.pno = :pno")
-	void updateToDelete(@Param("pno") Long pno, @Param("flag") boolean flag);
+	@Query("update Product p set p.delFlag = :flag where p.pno = :pno")
+	void updateToDelete(@Param("pno") Long pno,@Param("flag") boolean flag);
+	
 }
