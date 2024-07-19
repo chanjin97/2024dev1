@@ -22,10 +22,10 @@ import lombok.ToString;
 @ToString(exclude="owner")
 @Table(
 		name="tbl_cart",
-		indexes = {@Index(name="idex_cart_email", columnList = "member_owner")}
+		indexes = {@Index(name="idex_cart_email", columnList="member_owner")}
 		)
 public class Cart {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long cno;

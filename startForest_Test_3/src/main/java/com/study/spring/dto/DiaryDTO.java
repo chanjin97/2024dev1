@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class DiaryDTO {
 
 	private Long id;
-	private int reservationId;
+	private Long reservationId;
 	private String content;
 	private String category;
 	private ZonedDateTime createdAt;

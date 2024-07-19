@@ -15,10 +15,12 @@ import com.study.spring.dto.DiaryDTO;
 import com.study.spring.service.DiaryService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @RestController
 @RequestMapping("/diary")
 @RequiredArgsConstructor
+@Log4j2
 public class DiaryController {
 
 	private final DiaryService diaryService;
@@ -29,6 +31,8 @@ public class DiaryController {
 			@RequestBody DiaryDTO diaryDTO
 			) {
 		diaryService.createDiary(diaryDTO);
+		
+		log.info("post 성공");
 	}
 	
 	// 전체 리스트 조회
@@ -43,12 +47,17 @@ public class DiaryController {
 						entity.getCreatedAt()
 						))
 				.toList();
+		
+//		log.info("전체 리스트 조회성공");
 	}
 	
 	// 해당 아이디의 기록 조회
 	@GetMapping("/view/{id}")
 	public DiaryDTO getDiaryById(@PathVariable Long id) {
+//		log.info("해당 아이디 기록 조회 성공");
+		
 		return diaryService.getDiaryById(id);
+		
 	}
 	
 	// 수정 - 아직 미구현
@@ -57,11 +66,13 @@ public class DiaryController {
 	        // TODO: Implement update logic in service
 	    }
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/view/{id}")
 	public void deleteDiary (
-			@PathVariable Long id
+			@PathVariable("id") Long id
 			) {
 		diaryService.deleteDiary(id);
+		
+//		log.info("해당 기록 삭제 성공");
 	}
 	
 }

@@ -2,6 +2,8 @@ package com.study.spring.entity;
 
 import java.time.ZonedDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,14 +27,16 @@ public class DiaryEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private int reservationId;
+	private Long reservationId;
 	
-//	@Column(columnDefinition = "TEXT")
+	@Column(columnDefinition = "TEXT")
 	private String content;
 	
 	private String category;
 	
-	private ZonedDateTime createdAt = ZonedDateTime.now();
+	@CreationTimestamp
+	@Column(name = "created_at")
+	private ZonedDateTime createdAt;
 
 	public void changeContent(String content) {
 		this.content = content;

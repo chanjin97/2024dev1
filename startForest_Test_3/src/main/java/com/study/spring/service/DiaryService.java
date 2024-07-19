@@ -24,6 +24,7 @@ public class DiaryService {
 		
 		DiaryEntity diary = DiaryEntity.builder()
 				.reservationId(diaryDTO.getReservationId())
+				.content(diaryDTO.getContent())
 				.category(diaryDTO.getCategory())
 				.createdAt(diaryDTO.getCreatedAt())
 				.build();

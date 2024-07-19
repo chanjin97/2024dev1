@@ -38,10 +38,10 @@ public class JWTCheckFilter extends OncePerRequestFilter{
 	}
 	
 	
-	 @Override
-	    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
-	        log.info("---------------doFilterInternal-----------------");
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+		 log.info("---------------doFilterInternal-----------------");
 	        log.info("---------------doFilterInternal-----------------");
 	        log.info("---------------doFilterInternal-----------------");
 
@@ -54,7 +54,7 @@ public class JWTCheckFilter extends OncePerRequestFilter{
 	            Map<String, Object> claims = JWTUtil.validateToken(accessToken);
 
 	            log.info("JWT claims: " + claims);
-	            //filterChain.doFilter(request, response); //이하 추가
+	            
 	            String email = (String) claims.get("email");
 	            String pw = (String) claims.get("pw");
 	            String nickname = (String) claims.get("nickname");
@@ -69,7 +69,9 @@ public class JWTCheckFilter extends OncePerRequestFilter{
 	                    = new UsernamePasswordAuthenticationToken(memberDTO, pw, memberDTO.getAuthorities());
 
 	            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+	            
 	            filterChain.doFilter(request, response);
+	            
 	        }catch(Exception e){
 	            log.error("JWT Check Error..............");
 	            log.error(e.getMessage());
@@ -83,5 +85,5 @@ public class JWTCheckFilter extends OncePerRequestFilter{
 	            printWriter.close();
 	        }
 	    }
-	
-}
+		
+	}

@@ -1,7 +1,5 @@
 package com.study.spring.domain;
 
-import org.springframework.stereotype.Indexed;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,7 +28,7 @@ import lombok.ToString;
 		}
 		)
 public class CartItem {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long cino;
@@ -40,22 +38,15 @@ public class CartItem {
 	@ManyToOne
 	@JoinColumn(name="cart_cno")
 	private Cart cart;
-
+	
 	@ManyToOne
 	@JoinColumn(name="product_pno")
 	private Product product;
+	
 	
 	public void changeQty(int qty) {
 		this.qty = qty;
 	}
 	
+	
 }
-
-
-
-
-
-
-
-
-
