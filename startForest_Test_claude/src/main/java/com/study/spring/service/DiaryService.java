@@ -15,7 +15,7 @@ import com.study.spring.repository.DiaryRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 @RequiredArgsConstructor
 public class DiaryService {
 
@@ -42,12 +42,12 @@ public class DiaryService {
 	
 	// 모든 diary 조회
 	public List<Diary> getAllDiaries() {
-		return diaryRepository.findAllwithImages();
+		return diaryRepository.findAllWithImages();
 	}
 	
 	// 해당 id 로 diary조회
 	public Diary getDiaryById(Long id) {
-		return diaryRepository.findById(id)
+		return diaryRepository.findByIdWithImages(id)
 				.orElseThrow(() -> new RuntimeException("Diary 가 없습니다"));
 	}
 	

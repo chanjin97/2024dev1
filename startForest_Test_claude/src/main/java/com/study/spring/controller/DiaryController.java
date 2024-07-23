@@ -20,10 +20,12 @@ import com.study.spring.entity.DiaryImage;
 import com.study.spring.service.DiaryService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
 @RestController
 @RequestMapping("/diary")
 @RequiredArgsConstructor
+@Log4j2
 public class DiaryController {
 
 	public final DiaryService diaryService;
@@ -52,7 +54,7 @@ public class DiaryController {
 	
 	// 해당 별숲기록 view
 	@GetMapping("/view/{id}")
-	public ResponseEntity<DiaryDTO> getDiary(@PathVariable Long id) {
+	public ResponseEntity<DiaryDTO> getDiary(@PathVariable("id") Long id) {
 		Diary diary = diaryService.getDiaryById(id);
 		
 		return ResponseEntity.ok(convertToDTO(diary)); // 특정 ID의 Diary를 DTO로 변환하여 반환
@@ -61,7 +63,7 @@ public class DiaryController {
 	// 해당 별숲기록 수정하기
 	@PutMapping("/view/{id}")
 	public ResponseEntity<DiaryDTO> updateDiary(
-			@PathVariable Long id, @RequestBody DiaryCreateRequest request
+			@PathVariable("id") Long id, @RequestBody DiaryCreateRequest request
 			) {
 		Diary diaryView = Diary.builder()
 				.content(request.getContent())
@@ -75,9 +77,10 @@ public class DiaryController {
 	
 	// 해당 별숲기록 삭제
 	@DeleteMapping("/view/{id}")
-	public ResponseEntity<Void> deleteDiary(@PathVariable Long id) {
+	public ResponseEntity<Void> deleteDiary(@PathVariable("id") Long id) {
 		diaryService.deleteDiary(id);
 		
+		log.info("delete success" + id);
 		return ResponseEntity.noContent().build(); // 삭제후 204 No Content 응답 ?
 	}
 		
